@@ -34,7 +34,7 @@
                   <td>{{$product->id }}</td>
                   <td>{{$product->Brand }}</td>
                   <td>{{$product->Model }}</td>
-                  <td>{{$product->Description }}</td>
+                  <td><div style="height:100px; overflow:hidden;">{{$product->Description }}</div></td>
                   <td>{{$product->ReleaseDate }}</td>
                   <td>{{$product->Price}}$</td>
                 </tr>
