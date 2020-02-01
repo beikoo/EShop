@@ -14,6 +14,6 @@ class UserProducts extends Controller
     }
     public function Buy()
     {
-     return redirect('/products')->with('status','You have bought new product');
+     return redirect('/products')->with('status','You have bought new item');
     }
 }    
