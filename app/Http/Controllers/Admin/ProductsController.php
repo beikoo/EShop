@@ -22,13 +22,12 @@ class ProductsController extends Controller
     public function Save(Request $request)
     {  
             $products = new Products;
-
             $products->brand = $request->input('brand');
             $products->model = $request->input('model');
             $products->releasedate = $request->input('releasedate');
             $products->description = $request->input('description');
             $products->price = $request->input('price');
-
+            
             $products->save();
             return redirect('/EditProducts')->with('status','The Product has been added to List');
    }
@@ -57,9 +56,5 @@ class ProductsController extends Controller
     $products = Products::findorfail($id);
     $products->delete();
     return redirect('/EditProducts')->with('status','The Product is Deleted Successfully');
-   }
-   public function Buy()
-   {
-    
    }
 }

@@ -43,11 +43,11 @@
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Price:</label>
                 <input type="text" name="price" class="form-control" id="recipient-name">
-              </div>
+            </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           <button type="submit" class="btn btn-primary">Add</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         </div>
       </form>
       </div>

@@ -12,4 +12,8 @@ class UserProducts extends Controller
         $products = Products::all();
         return view('user.products')->with('Products',$products);
     }
+    public function Buy()
+    {
+     return redirect('/products')->with('status','You have bought new product');
+    }
 }    

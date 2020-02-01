@@ -41,5 +41,6 @@ Route::group(['middleware' => ['auth',]], function ()
         return view('user.home');
     });
     Route::get('/products','User\UserProducts@getProducts');
+    Route::get('/buy','User\UserProducts@Buy');
 
 });

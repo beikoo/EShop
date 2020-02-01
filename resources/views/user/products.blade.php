@@ -15,6 +15,11 @@
                 <h4 class="card-title">
                     List Of Products
                  </h4>
+                 @if (session('status'))
+                 <div class="alert alert-success" role="alert">
+                     {{ session('status') }}
+                 </div>
+                 @endif
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -38,7 +43,7 @@
                           <td>{{$product->ReleaseDate }}</td>
                           <td>{{$product->Price}}$</td>
                           <td>
-                            <a href="#" class="btn btn-success">Buy</a>
+                            <a href="/buy" class="btn btn-success">Buy</a>
                           </td>
                         </tr>
                         @endforeach
