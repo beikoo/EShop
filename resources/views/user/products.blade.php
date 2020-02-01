@@ -25,6 +25,7 @@
                 <div class="table-responsive">
                   <table id="table" class="table">
                     <thead class=" text-primary">
+                      <th><i class="now-ui-icons arrows-1_minimal-down"></th>
                       <th>ID</th>
                       <th>Brand</th>
                       <th>Model</th>
@@ -36,10 +37,11 @@
                     <tbody>
                         @foreach ($Products as $product)
                         <tr>
+                          <td><i class="now-ui-icons tech_mobile"></i></td>
                           <td>{{$product->id }}</td>
                           <td>{{$product->Brand }}</td>
                           <td>{{$product->Model }}</td>
-                          <td>{{$product->Description }}</td>
+                          <td><div style="height:100px; overflow:hidden;">{{$product->Description }}</div></td>
                           <td>{{$product->ReleaseDate }}</td>
                           <td>{{$product->Price}}$</td>
                           <td>
