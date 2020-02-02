@@ -43,6 +43,14 @@
                 <p>Products</p>
               </a>
             </li>
+            @if(Auth::user()->usertype == 'admin')
+            <li>
+                <a href="/admin">
+                  <i class="now-ui-icons ui-2_settings-90"></i>
+                  <p>Admin Panel</p>
+                </a>
+              </li>
+            @endif
         </ul>
       </div>
     </div>

@@ -62,6 +62,11 @@
                     List Of Products
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add</button>
                  </h4>
+                 <div>{{$errors->first('brand') }}</div>
+                 <div>{{$errors->first('model') }}</div>
+                 <div>{{$errors->first('releasedate') }}</div>
+                 <div>{{$errors->first('description') }}</div>
+                 <div>{{$errors->first('price') }}</div>
                  @if (session('status'))
                  <div class="alert alert-success" role="alert">
                      {{ session('status') }}
