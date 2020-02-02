@@ -21,6 +21,15 @@ class ProductsController extends Controller
     
     public function Save(Request $request)
     {  
+            $data = request()->validate
+            ([
+                'brand' => 'required|min:3',
+                'model' => 'required|min:1',
+                'releasedate' => 'required|min:10|max:10',
+                'description' => 'required|min:3|max:5000',
+                // 'price' => 'required',
+                'price' => 'regex:/^[0-9]*\.?[0-9]{2}+$/'
+            ]);
             $products = new Products;
             $products->brand = $request->input('brand');
             $products->model = $request->input('model');
