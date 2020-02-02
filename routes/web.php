@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth','admin']], function ()
     Route::get('EditProducts/{id}','Admin\ProductsController@Edit');
     Route::put('/UpdateProducts/{id}', 'Admin\ProductsController@Update');
     Route::delete('/DeleteProduct/{id}', 'Admin\ProductsController@Delete');
+    Route::get('/sales', 'Admin\SalesController@getSales');
 });
 
 Route::group(['middleware' => ['auth',]], function () 
@@ -41,6 +42,6 @@ Route::group(['middleware' => ['auth',]], function ()
         return view('user.home');
     });
     Route::get('/products','User\UserProducts@getProducts');
-    Route::get('/buy/{productID}/user/{userID}','User\UserProducts@Buy');
+    Route::get('/buy/{productID}/{userID}','User\UserProducts@Buy');
 
 });

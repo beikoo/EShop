@@ -43,7 +43,7 @@
                           <td>{{$product->ReleaseDate }}</td>
                           <td>{{$product->Price}}$</td>
                           <td>
-                          <a href="buy/{{$product->id}}/user/{{Auth::user()->id}}" class="btn btn-success">Buy</a>
+                          <a href="buy/{{$product->id}}/{{Auth::user()->id}}" class="btn btn-success">Buy</a>
                           </td>
                         </tr>
                         @endforeach

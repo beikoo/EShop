@@ -55,6 +55,12 @@
               <p>Registered Users</p>
             </a>
           </li>
+          <li>
+              <a href="/sales">
+                <i class="now-ui-icons ui-2_settings-90"></i>
+                <p>Sales</p>
+              </a>
+            </li>
             </a>
           </li>
         </ul>

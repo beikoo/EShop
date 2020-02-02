@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -9,13 +9,13 @@ class ProductsController extends Controller
 {
     public function getProducts()
     {
-        $products = Products::all();
+        $products = Product::all();
         return view('admin.products')->with('Products',$products);
     }
 
     public function getProductsDash()
     {
-        $products = Products::all();
+        $products = Product::all();
         return view('admin.dashboard')->with('Products',$products);
     }
     
@@ -30,7 +30,7 @@ class ProductsController extends Controller
                 // 'price' => 'required',
                 'price' => 'regex:/^[0-9]*\.?[0-9]{2}+$/'
             ]);
-            $products = new Products;
+            $products = new Product;
             $products->brand = $request->input('brand');
             $products->model = $request->input('model');
             $products->releasedate = $request->input('releasedate');
@@ -43,14 +43,14 @@ class ProductsController extends Controller
 
    public function Edit($id)
    {
-        $products = Products::FindOrFail($id);
+        $products = Product::FindOrFail($id);
         return view('admin.editproducts')->with('products',$products);
     
    }
 
    public function Update(Request $request, $id)
    {
-       $products = Products::find($id);
+       $products = Product::find($id);
        $products->Brand = $request->input('Brand');
        $products->Model = $request->input('Model');
        $products->ReleaseDate = $request->input('ReleaseDate');
@@ -62,7 +62,7 @@ class ProductsController extends Controller
 
    public function Delete($id)
    {
-    $products = Products::findorfail($id);
+    $products = Product::findorfail($id);
     $products->delete();
     return redirect('/EditProducts')->with('status','The Product is Deleted Successfully');
    }
