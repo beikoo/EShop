@@ -17,7 +17,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/saveproducts" method="post">
+        <form action="/saveproducts" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
             <div class="form-group">
@@ -44,6 +44,9 @@
                 <label for="recipient-name" class="col-form-label">Price:</label>
                 <input type="text" name="price" class="form-control" id="recipient-name">
             </div>
+            <img src="{{asset('/images/noimage.png')}}" style="vertical-align:bottom;max-height:240px;border:1px solid #dcdcdc;">
+            <input type="file" class="btn btn-default" accept="image/*" name="image" />
+            <div>{{ $errors->first('image') }}</div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Add</button>
@@ -84,6 +87,7 @@
                       <th>Description</th>
                       <th>ReleaseDate</th>
                       <th>Price</th>
+                      <th>Picture</th>
                       <th>EDIT</th>
                       <th>DELETE</th>
                     </thead>
@@ -97,6 +101,13 @@
                           <td><div style="height:100px; overflow:hidden;">{{$product->Description }}</div></td>
                           <td>{{$product->ReleaseDate }}</td>
                           <td>{{$product->Price}}$</td>
+                          <td>
+                            @if (!empty($product['image']))
+                              <img src="{{asset('storage/images/'.$product['image'])}}" style="vertical-align:bottom;max-height:240px;border:1px solid #dcdcdc;">
+                              @else
+                                  <img src="{{asset('/images/noimage.png')}}" style="vertical-align:bottom;max-height:240px;border:1px solid #dcdcdc;">
+                              @endif
+                            </td>
                         <td>
                         <a href="{{url('EditProducts/'.$product->id)}}" class="btn btn-success">Edit</a>
                         </td>

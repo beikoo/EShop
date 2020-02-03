@@ -43,6 +43,13 @@
                           <td>{{$product->ReleaseDate }}</td>
                           <td>{{$product->Price}}$</td>
                           <td>
+                              @if (!empty($product['image']))
+                                <img src="{{asset('storage/images/'.$product['image'])}}" style="vertical-align:bottom;max-height:240px;border:1px solid #dcdcdc;">
+                                @else
+                                    <img src="{{asset('/images/noimage.png')}}" style="vertical-align:bottom;max-height:240px;border:1px solid #dcdcdc;">
+                                @endif
+                              </td>
+                          <td>
                           <a href="buy/{{$product->id}}/{{Auth::user()->id}}" class="btn btn-success">Buy</a>
                           </td>
                         </tr>

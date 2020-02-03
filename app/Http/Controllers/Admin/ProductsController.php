@@ -30,12 +30,24 @@ class ProductsController extends Controller
                 // 'price' => 'required',
                 'price' => 'regex:/^[0-9]*\.?[0-9]{2}+$/'
             ]);
+            $imageName = '';
+                if($request->hasFile('image'))
+                {
+                    $request->validate([
+                        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+                    ]);
+                    
+                    $saveImg = $request->image->store('images', 'public');
+
+                    $imageName = $request->image->hashName();
+                }
             $products = new Product;
             $products->brand = $request->input('brand');
             $products->model = $request->input('model');
             $products->releasedate = $request->input('releasedate');
             $products->description = $request->input('description');
             $products->price = $request->input('price');
+            $products->image = $imageName;
             
             $products->save();
             return redirect('/EditProducts')->with('status','The Product has been added to List');
@@ -50,12 +62,22 @@ class ProductsController extends Controller
 
    public function Update(Request $request, $id)
    {
+        $imageName = '';
+        if($request->hasFile('image')){
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            ]);
+            $saveImg = $request->image->store('images', 'public');
+            $imageName = $request->image->hashName();
+        }
+
        $products = Product::find($id);
        $products->Brand = $request->input('Brand');
        $products->Model = $request->input('Model');
        $products->ReleaseDate = $request->input('ReleaseDate');
        $products->Description = $request->input('Description');
        $products->Price = $request->input('Price');
+       $products->image = $imageName;
        $products->update();
        return redirect('/EditProducts')->with('status','Updated Successfully');
    }

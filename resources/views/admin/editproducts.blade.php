@@ -11,10 +11,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                         <h5>Edit User</h5>
+                         <h5>Edit Product</h5>
                     </div>
                     <div class="card-body">
-                        <form action="/UpdateProducts/{{$products->id}}" method="POST">
+                        <form action="/UpdateProducts/{{$products->id}}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{method_field('PUT')}}
                             <div class="form-group">
@@ -37,6 +37,13 @@
                                     <label>Price</label>
                                     <input type="text" name="Price" value="{{$products->Price}}" class="form-control">
                             </div>
+                            @if (!empty($products['image']))
+                            <img src="{{asset('storage/images/'.$products['image'])}}" style="vertical-align:bottom;max-height:240px;border:1px solid #dcdcdc;">
+                            @else
+                                <img src="{{asset('/images/noimage.png')}}" style="vertical-align:bottom;max-height:240px;border:1px solid #dcdcdc;">
+                            @endif
+                            <input type="file" class="btn btn-default" accept="image/*" name="image" />
+                            <div>{{ $errors->first('image') }}</div>
                             <button type ="submit" class="btn btn-success">Submit</button>
                             <a href="/EditProducts" class="btn btn-danger">Cancel</a>
                         </form>
